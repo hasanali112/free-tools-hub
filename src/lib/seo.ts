@@ -7,7 +7,7 @@ export function pageMetadata({ title, description, path }: { title: string; desc
   return {
     title,
     description,
-    alternates: { canonical: path },
+    alternates: { canonical: path, languages: { "en-US": path } },
     openGraph: { title, description, url: path, siteName: site.name, type: "website", locale: "en_US" },
     twitter: { card: "summary_large_image", title, description },
   };
@@ -45,5 +45,43 @@ export function breadcrumbLd(items: { name: string; path: string }[]) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: items.map((it, i) => ({ "@type": "ListItem", position: i + 1, name: it.name, item: absoluteUrl(it.path) })),
+  };
+}
+
+/** Organization + WebSite structured data (home page). */
+export function siteLd() {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: site.name,
+      url: absoluteUrl("/"),
+      logo: absoluteUrl("/logo.svg"),
+      email: site.contactEmail,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: site.name,
+      url: absoluteUrl("/"),
+      description: site.description,
+      inLanguage: "en-US",
+      publisher: { "@type": "Organization", name: site.name },
+    },
+  ];
+}
+
+/** CollectionPage + ItemList for category pages, so search engines see the list of tools. */
+export function collectionLd(name: string, description: string, path: string, items: ToolMeta[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: absoluteUrl(path),
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t.name, url: absoluteUrl(t.path) })),
+    },
   };
 }

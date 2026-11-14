@@ -1,6 +1,8 @@
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ToolCard } from "@/components/ToolCard";
 import { Icon } from "@/components/ToolIcon";
+import { JsonLd } from "@/components/JsonLd";
+import { collectionLd } from "@/lib/seo";
 import { getCategory, toolsIn } from "@/tools/registry";
 import type { CategorySlug } from "@/tools/types";
 
@@ -36,6 +38,7 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
           <ToolCard key={t.slug} tool={t} />
         ))}
       </div>
+      <JsonLd data={collectionLd(`Free ${category.name}`, category.description, `/${slug}`, list)} />
     </div>
   );
 }

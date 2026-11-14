@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata({
 export default function Page() {
   return (
     <TextPage title="Privacy Policy">
-      <p>Last updated: November 14, 2026</p>
+      <p>Last updated: November 15, 2026</p>
       <p>
         This Privacy Policy explains what information {site.name} (“we”, “us”) collects when you use {site.url} and how
         it is used.
@@ -36,8 +36,8 @@ export default function Page() {
 
       <h2>Analytics</h2>
       <p>
-        We use Google Analytics 4 to understand how visitors use the site so we can improve it and decide which tools to
-        build next. Google Analytics uses cookies and similar technologies. Learn more at{" "}
+        We use Google Tag Manager and Google Analytics 4 to understand how visitors use the site so we can improve it
+        and decide which tools to build next. Google Analytics uses cookies and similar technologies. Learn more at{" "}
         <a href="https://policies.google.com/technologies/partner-sites" rel="noopener noreferrer" target="_blank">
           How Google uses data from sites that use its services
         </a>

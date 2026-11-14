@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { ToolSearch, type SearchItem } from "@/components/ToolSearch";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon } from "@/components/ToolIcon";
-import { absoluteUrl, site } from "@/config/site";
+import { site } from "@/config/site";
+import { siteLd } from "@/lib/seo";
 import { activeCategories, getCategory, getTool, tools } from "@/tools/registry";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  title: { absolute: `${site.name} — Free Online Image, PDF & Video Tools, No Upload` },
+  description:
+    "Free online tools that run in your browser: convert HEIC to JPG, compress images and PDFs, merge PDFs, convert MOV to MP4, and calculate take-home pay. No upload, no sign-up.",
+  alternates: { canonical: "/", languages: { "en-US": "/" } },
   openGraph: { title: site.name, description: site.description, url: "/", siteName: site.name, type: "website" },
 };
 
@@ -129,7 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: absoluteUrl("/") }} />
+      <JsonLd data={siteLd()} />
     </div>
   );
 }
