@@ -55,7 +55,7 @@ export default function Tool() {
                 setPresetId(e.target.value);
                 setFit("crop");
               }}
-              className="h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="h-11 w-full rounded-lg border border-slate-300 bg-white px-3 text-base focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
             >
               <option value="custom">Custom size</option>
               {GROUPS.map((g) => (

@@ -32,10 +32,10 @@ export function Segmented<T extends string>({
           role="radio"
           aria-checked={value === o.value}
           onClick={() => onChange(o.value)}
-          className={`min-h-10 rounded-lg border px-3.5 py-2 text-sm font-medium transition ${
+          className={`min-h-10 rounded-xl border px-3.5 py-2 text-sm font-medium transition ${
             value === o.value
-              ? "border-blue-600 bg-blue-600 text-white"
-              : "border-slate-300 bg-white text-slate-700 hover:border-blue-400"
+              ? "border-transparent bg-brand-gradient text-white shadow-md shadow-brand-600/25"
+              : "border-slate-200 bg-white text-slate-700 hover:border-brand-300 hover:text-brand-700"
           }`}
         >
           {o.label}
@@ -55,7 +55,7 @@ export function QualitySlider({ value, onChange }: { value: number; onChange: (v
         step={1}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-blue-600"
+        className="w-full accent-brand-600"
         aria-label="Quality"
       />
     </Field>
@@ -104,7 +104,7 @@ export function NumberInput({
           max={max}
           value={Number.isFinite(value) ? value : ""}
           onChange={(e) => onChange(Math.max(0, Math.min(max, Math.round(Number(e.target.value)))))}
-          className="h-11 w-full rounded-lg border border-slate-300 px-3 text-base focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+          className="h-11 w-full rounded-lg border border-slate-300 px-3 text-base focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
         />
         {suffix && <span className="text-sm text-slate-500">{suffix}</span>}
       </span>

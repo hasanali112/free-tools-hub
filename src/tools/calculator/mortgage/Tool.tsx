@@ -7,7 +7,7 @@ import { money, num } from "@/lib/format";
 import { useToolUsed } from "@/lib/useToolUsed";
 import { calculateMortgage } from "./engine";
 
-const COLORS = ["bg-blue-600", "bg-sky-400", "bg-emerald-500", "bg-amber-400", "bg-slate-400"];
+const COLORS = ["bg-brand-600", "bg-brand-400", "bg-accent-400", "bg-brand-200", "bg-slate-300"];
 
 export default function Tool() {
   const used = useToolUsed("mortgage");

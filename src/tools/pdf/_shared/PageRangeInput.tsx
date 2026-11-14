@@ -23,7 +23,7 @@ export function PageRangeInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="h-11 w-full max-w-md rounded-lg border border-slate-300 px-3 text-base focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        className="h-11 w-full max-w-md rounded-lg border border-slate-300 px-3 text-base focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"
       />
     </Field>
   );

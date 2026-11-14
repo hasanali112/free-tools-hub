@@ -29,17 +29,17 @@ function BracketTable({ brackets }: { brackets: [number, number][] }) {
 export function StateTaxDetails({ state }: { state: StateTax }) {
   return (
     <section className="mt-10">
-      <h2 className="text-xl font-bold text-slate-900">
+      <h2 className="text-xl font-bold text-ink">
         {state.name} income tax rates for {TAX_YEAR}
       </h2>
       {state.brackets ? (
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <h3 className="mb-2 font-semibold text-slate-900">Single</h3>
+            <h3 className="mb-2 font-semibold text-ink">Single</h3>
             <BracketTable brackets={state.brackets.single} />
           </div>
           <div className="rounded-xl border border-slate-200 bg-white p-4">
-            <h3 className="mb-2 font-semibold text-slate-900">Married filing jointly</h3>
+            <h3 className="mb-2 font-semibold text-ink">Married filing jointly</h3>
             <BracketTable brackets={state.brackets.married} />
           </div>
         </div>
@@ -80,14 +80,14 @@ export function StateTaxDetails({ state }: { state: StateTax }) {
 export function AllStatesLinks({ current }: { current?: string }) {
   return (
     <section className="mt-10">
-      <h2 className="text-xl font-bold text-slate-900">Paycheck calculators by state</h2>
+      <h2 className="text-xl font-bold text-ink">Paycheck calculators by state</h2>
       <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm sm:grid-cols-3">
         {stateList.map((s) => (
           <li key={s.code}>
             {s.slug === current ? (
-              <span className="font-semibold text-slate-900">{s.name}</span>
+              <span className="font-semibold text-ink">{s.name}</span>
             ) : (
-              <Link href={`/calculator/paycheck/${s.slug}`} className="text-blue-700 hover:underline">
+              <Link href={`/calculator/paycheck/${s.slug}`} className="text-brand-700 hover:underline">
                 {s.name}
               </Link>
             )}

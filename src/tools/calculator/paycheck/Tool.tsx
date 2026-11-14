@@ -157,7 +157,7 @@ function Stat({ label, value, sub }: { label: string; value: string; sub?: strin
   return (
     <div className="rounded-xl border border-slate-200 p-3">
       <p className="text-xs text-slate-500">{label}</p>
-      <p className="mt-0.5 text-lg font-bold text-slate-900">{value}</p>
+      <p className="mt-0.5 text-lg font-bold text-ink">{value}</p>
       {sub && <p className="text-xs text-slate-500">{sub}</p>}
     </div>
   );

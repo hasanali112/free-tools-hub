@@ -67,7 +67,7 @@ export default function Tool() {
       </div>
       <p className="mt-4 text-sm text-slate-600">
         Want to know what you actually take home?{" "}
-        <Link href="/calculator/paycheck" className="font-medium text-blue-700 hover:underline">
+        <Link href="/calculator/paycheck" className="font-medium text-brand-700 hover:underline">
           Use the paycheck calculator
         </Link>{" "}
         to subtract taxes for your state.

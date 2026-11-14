@@ -1,4 +1,4 @@
-# Free Tools Hub
+# AIToolkitFree
 
 Free browser-based tools (images now; PDF, calculators and video next). All file processing happens in the
 user's browser — nothing is uploaded. Built with Next.js (App Router, static export) + Tailwind, hosted on
@@ -103,6 +103,15 @@ head of household. It doesn't model every state credit or phase-out, so results 
 - The FFmpeg class is loaded at runtime from `/vendor/ffmpeg/index.js` (not bundled), because Turbopack can't
   bundle its `new Worker(new URL(...))` call.
 - To add a video tool: write a `process.ts` that calls `runFFmpeg(file, "out.ext", ({ input, info }) => [...args, "out.ext"], onProgress)`.
+
+## Brand
+
+- Name, URL and contact email: `src/config/site.ts`.
+- Logo: `src/components/brand/` (one shared geometry file feeds the header logo, `src/app/icon.svg` favicon,
+  the Apple touch icon and the Open Graph images). `public/logo.svg` is a standalone copy.
+- Colors: `brand-*` (indigo → violet, from the logo gradient) and `accent-*` (cyan) in `src/app/globals.css`,
+  plus `bg-brand-gradient`, `text-brand-gradient`, `btn-primary`, `btn-secondary` and `btn-ghost` utilities.
+- Font: Poppins via `next/font` (self-hosted at build time).
 
 ## Ads
 

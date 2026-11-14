@@ -1,7 +1,30 @@
 @import "tailwindcss";
 
+/*
+ * AIToolkitFree brand system.
+ * Brand = the logo gradient (indigo #4F46E5 → violet #7C3AED); accent = the logo's cyan spark.
+ * Use `brand-*` for every interactive color so the whole site matches the logo.
+ */
 @theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --color-brand-50: #f4f2ff;
+  --color-brand-100: #ebe7ff;
+  --color-brand-200: #d9d1ff;
+  --color-brand-300: #bdaeff;
+  --color-brand-400: #9b84fb;
+  --color-brand-500: #7c5cf5;
+  --color-brand-600: #6545ea;
+  --color-brand-700: #5435cf;
+  --color-brand-800: #452ca8;
+  --color-brand-900: #3a2885;
+  --color-brand-950: #231753;
+
+  --color-accent-300: #67e8f9;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+
+  --color-ink: #0f0d2e;
 }
 
 :root {
@@ -13,17 +36,39 @@ html {
 }
 
 body {
-  background: #f8fafc;
-  color: #0f172a;
+  background: #fafaff;
+  color: #1e1b3a;
+}
+
+/* Logo gradient, reused by primary buttons, icon tiles and highlights. */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+@utility text-brand-gradient {
+  background-image: linear-gradient(135deg, #4f46e5 0%, #7c3aed 60%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Primary call-to-action button */
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-5 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:shadow-xl hover:shadow-brand-600/30 hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none;
+}
+@utility btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-950 px-5 font-semibold text-white shadow-sm transition hover:bg-brand-900 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:opacity-60;
+}
+@utility btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 font-medium text-slate-700 transition hover:border-brand-300 hover:text-brand-700 disabled:opacity-50;
 }
 
 /* Long-form text pages (privacy, terms, about) */
 .prose-page h2 {
-  @apply mt-8 mb-2 text-xl font-bold text-slate-900;
+  @apply mt-8 mb-2 text-xl font-semibold text-ink;
 }
 .prose-page p,
 .prose-page li {
-  @apply leading-7 text-slate-700;
+  @apply leading-7 text-slate-600;
 }
 .prose-page p {
   @apply mb-4;
@@ -32,5 +77,5 @@ body {
   @apply mb-4 list-disc space-y-1 pl-6;
 }
 .prose-page a {
-  @apply text-blue-700 underline;
+  @apply font-medium text-brand-700 underline decoration-brand-300 underline-offset-2;
 }

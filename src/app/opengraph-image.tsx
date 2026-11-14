@@ -7,5 +7,5 @@ export const contentType = "image/png";
 export const dynamic = "force-static";
 
 export default function Image() {
-  return ogImage({ title: "Free Online Tools", subtitle: "Images, PDFs, video & calculators — right in your browser" });
+  return ogImage({ title: "Every tool you need, free & private", subtitle: "Images, PDFs, video & calculators — right in your browser" });
 }

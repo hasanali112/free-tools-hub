@@ -3,7 +3,7 @@
 import { useId } from "react";
 
 const inputCls =
-  "h-12 w-full rounded-lg border border-slate-300 bg-white text-base text-slate-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200";
+  "h-12 w-full rounded-xl border border-slate-200 bg-slate-50/50 text-base text-ink focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200";
 
 /** Number input with optional "$" prefix or "%"/unit suffix. Empty input = NaN (treated as 0 by calculators). */
 export function NumField({
@@ -87,16 +87,17 @@ export function SelectField<T extends string>({
 }
 
 export function CalcCard({ children }: { children: React.ReactNode }) {
-  return <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">{children}</div>;
+  return <div className="rounded-3xl border border-slate-200/80 bg-white p-4 shadow-xl shadow-brand-900/5 sm:p-6">{children}</div>;
 }
 
 /** Big highlighted result. */
 export function BigResult({ label, value, sub }: { label: string; value: string; sub?: React.ReactNode }) {
   return (
-    <div className="rounded-xl bg-blue-600 p-5 text-white">
-      <p className="text-sm font-medium text-blue-100">{label}</p>
-      <p className="mt-1 text-3xl font-extrabold tracking-tight sm:text-4xl">{value}</p>
-      {sub && <div className="mt-1 text-sm text-blue-100">{sub}</div>}
+    <div className="relative overflow-hidden rounded-2xl bg-brand-gradient p-5 text-white shadow-lg shadow-brand-600/25">
+      <div aria-hidden className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+      <p className="relative text-sm font-medium text-brand-100">{label}</p>
+      <p className="relative mt-1 text-3xl font-bold tracking-tight sm:text-4xl">{value}</p>
+      {sub && <div className="relative mt-1 text-sm text-brand-100">{sub}</div>}
     </div>
   );
 }

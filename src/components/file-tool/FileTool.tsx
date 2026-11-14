@@ -250,7 +250,7 @@ export function FileTool({
   const tooFew = total < minFiles;
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+    <div className="rounded-3xl border border-slate-200/80 bg-white p-4 shadow-xl shadow-brand-900/5 sm:p-6">
       {/* Drop zone */}
       <div
         role="button"
@@ -268,15 +268,17 @@ export function FileTool({
           setDragging(false);
           if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
         }}
-        className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-4 py-10 text-center transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-200 ${
-          dragging ? "border-blue-500 bg-blue-50" : "border-slate-300 bg-slate-50 hover:border-blue-400 hover:bg-blue-50/50"
+        className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-4 py-12 text-center transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 ${
+          dragging ? "border-brand-500 bg-brand-50" : "border-brand-200 bg-gradient-to-b from-brand-50/70 to-white hover:border-brand-400 hover:bg-brand-50"
         }`}
       >
-        <svg aria-hidden className="mb-3 h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 16V4m0 0-4 4m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-        </svg>
+        <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gradient text-white shadow-lg shadow-brand-600/30">
+          <svg aria-hidden className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 16V4m0 0-4 4m4-4 4 4M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+          </svg>
+        </span>
         <p className="text-base font-semibold text-slate-800">
-          <span className="text-blue-600">Choose files</span> or drag them here
+          <span className="text-brand-700">Choose files</span> or drag them here
         </p>
         <p className="mt-1 text-sm text-slate-500">{formatsLabel} · Add as many as you like</p>
         <input
@@ -292,7 +294,7 @@ export function FileTool({
         />
       </div>
 
-      <p className="mt-3 flex items-center justify-center gap-1.5 text-sm text-emerald-700">
+      <p className="mt-3 flex items-center justify-center gap-1.5 text-sm font-medium text-brand-700">
         <svg aria-hidden className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 1 0-8 0v4m-2 0h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1Z" />
         </svg>
@@ -315,7 +317,7 @@ export function FileTool({
               type="button"
               onClick={run}
               disabled={running || tooFew}
-              className="inline-flex h-12 flex-1 items-center justify-center rounded-xl bg-blue-600 px-5 text-base font-semibold text-white shadow-sm transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="btn-primary h-12 flex-1 text-base"
             >
               {running
                 ? combineMode
@@ -330,7 +332,7 @@ export function FileTool({
                 type="button"
                 onClick={downloadZip}
                 disabled={zipping || running}
-                className="inline-flex h-12 items-center justify-center rounded-xl bg-emerald-600 px-5 text-base font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:opacity-70"
+                className="btn-secondary h-12 text-base"
               >
                 {zipping ? "Preparing ZIP…" : `Download all (${allOutputs.length}) as ZIP`}
               </button>
@@ -339,7 +341,7 @@ export function FileTool({
               type="button"
               onClick={clearAll}
               disabled={running}
-              className="inline-flex h-12 items-center justify-center rounded-xl border border-slate-300 px-4 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+              className="btn-ghost h-12 text-sm"
             >
               Clear
             </button>
@@ -355,7 +357,7 @@ export function FileTool({
                 aria-valuemax={100}
                 aria-valuenow={Math.round(overall * 100)}
               >
-                <div className="h-full rounded-full bg-blue-600 transition-[width] duration-300" style={{ width: `${overall * 100}%` }} />
+                <div className="h-full rounded-full bg-brand-gradient transition-[width] duration-300" style={{ width: `${overall * 100}%` }} />
               </div>
               {hasResults && !running && !combineMode && (
                 <p className="mt-2 text-sm text-slate-600">
@@ -367,7 +369,7 @@ export function FileTool({
           )}
 
           {outdated && (
-            <p className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-800">
+            <p className="mt-3 rounded-lg bg-brand-50 px-3 py-2 text-sm text-brand-800">
               Settings changed — press “{actionLabel}” again to apply them.
             </p>
           )}
@@ -379,9 +381,9 @@ export function FileTool({
           )}
 
           {combineMode && combined?.output && (
-            <div className="mt-4 flex flex-col gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 sm:flex-row sm:items-center">
+            <div className="mt-4 flex flex-col gap-3 rounded-xl border border-brand-200 bg-brand-50 p-4 sm:flex-row sm:items-center">
               <div className="min-w-0 flex-1">
-                <p className="truncate font-semibold text-slate-900">{combined.output.result.name}</p>
+                <p className="truncate font-semibold text-ink">{combined.output.result.name}</p>
                 <p className="text-sm text-slate-600">
                   {total} file{total > 1 ? "s" : ""} · {formatBytes(totalBefore)} → <strong>{formatBytes(totalAfter)}</strong>
                   {combined.output.result.note && <> · {combined.output.result.note}</>}
@@ -394,7 +396,7 @@ export function FileTool({
           {combineMode && total > 1 && (
             <div className="mt-4 flex items-center justify-between text-sm text-slate-600">
               <span>Files are combined in this order. Use the arrows to reorder.</span>
-              <button type="button" onClick={sortByName} disabled={running} className="font-medium text-blue-700 hover:underline disabled:opacity-50">
+              <button type="button" onClick={sortByName} disabled={running} className="font-medium text-brand-700 hover:underline disabled:opacity-50">
                 Sort by name
               </button>
             </div>
@@ -488,7 +490,7 @@ function FileRow({
           </p>
           {status === "processing" && (
             <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-slate-200">
-              <div className="h-full bg-blue-500 transition-[width]" style={{ width: `${progress * 100}%` }} />
+              <div className="h-full bg-brand-500 transition-[width]" style={{ width: `${progress * 100}%` }} />
             </div>
           )}
         </div>
@@ -532,7 +534,7 @@ function DownloadLink({ output, tool, small, big }: { output: Output; tool: stri
       href={output.url}
       download={output.result.name}
       onClick={() => track("download_clicked", { tool_name: tool, download_type: "single", file_count: 1 })}
-      className={`inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 font-semibold text-white hover:bg-blue-700 ${
+      className={`inline-flex shrink-0 items-center justify-center rounded-lg bg-brand-gradient font-semibold text-white shadow-sm shadow-brand-600/20 transition hover:brightness-110 ${
         small ? "h-8 px-2.5 text-xs" : big ? "h-12 px-6 text-base" : "h-10 px-3 text-sm"
       }`}
     >
