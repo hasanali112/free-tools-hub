@@ -64,10 +64,15 @@ body {
   @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-5 font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:shadow-xl hover:shadow-brand-600/30 hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none;
 }
 @utility btn-secondary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-950 px-5 font-semibold text-white shadow-sm transition hover:bg-brand-900 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:opacity-60;
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-brand-200 bg-white px-5 font-semibold text-brand-700 shadow-[0_6px_20px_-8px_rgba(60,40,170,0.25)] transition hover:border-brand-300 hover:bg-brand-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200 disabled:opacity-60;
 }
 @utility btn-ghost {
   @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 font-medium text-slate-700 transition hover:border-brand-300 hover:text-brand-700 disabled:opacity-50;
+}
+
+/* White card used for panels across the site */
+@utility surface {
+  @apply rounded-3xl border border-white bg-white/85 shadow-[0_18px_50px_-20px_rgba(60,40,170,0.22)] ring-1 ring-brand-100/60 backdrop-blur;
 }
 
 /* Long-form text pages (privacy, terms, about) */

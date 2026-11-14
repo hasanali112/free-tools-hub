@@ -79,14 +79,14 @@ export default function Home() {
               100% free · No sign-up · Files stay on your device
               <ShieldBadge />
             </p>
-            <h1 className="mt-8 text-[2.65rem] leading-[1.06] font-extrabold tracking-[-0.035em] text-ink sm:text-6xl lg:text-[4.6rem]">
+            <h1 className="mt-7 text-[2.1rem] leading-[1.12] font-extrabold tracking-[-0.025em] text-ink sm:text-5xl lg:text-[3.4rem]">
               Every tool you need, <span className="text-azure-500">free &amp;</span>{" "}
               <span className="relative inline-block pb-2">
                 <span className="text-brand-gradient">private</span>
                 <Swoosh />
               </span>
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 font-medium text-slate-700 sm:text-[1.35rem] sm:leading-9">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 font-medium text-slate-600 sm:text-lg sm:leading-8">
               Convert and compress images, PDFs and videos, or work out your take-home pay and mortgage — in seconds,
               right in your browser.
             </p>
@@ -99,8 +99,8 @@ export default function Home() {
                 ] as const
               ).map(([icon, n, label]) => (
                 <div key={label} className="flex shrink-0 items-center gap-2.5 px-4 md:px-7">
-                  <Icon name={icon} className="h-7 w-7 text-brand-600 sm:h-8 sm:w-8" strokeWidth={2} />
-                  <dt className="text-2xl font-bold text-azure-600 sm:text-[2rem]">{n}</dt>
+                  <Icon name={icon} className="h-6 w-6 text-brand-600 sm:h-7 sm:w-7" strokeWidth={2} />
+                  <dt className="text-2xl font-bold text-azure-600 sm:text-[1.75rem]">{n}</dt>
                   <dd className="self-end pb-0.5 text-sm font-medium text-slate-700 sm:pb-1 sm:text-base">{label}</dd>
                 </div>
               ))}
@@ -110,18 +110,19 @@ export default function Home() {
       />
 
       <section className="mx-auto mt-20 max-w-6xl px-4">
-        <div className="rounded-3xl bg-brand-950 px-6 py-12 text-white sm:px-12">
-          <h2 className="text-center text-2xl font-semibold sm:text-3xl">
-            Why people choose <span className="text-accent-300">{site.name}</span>
+        <div className="surface px-6 py-12 sm:px-12">
+          <p className="text-center text-sm font-semibold tracking-wide text-brand-600 uppercase">Why {site.name}</p>
+          <h2 className="mt-2 text-center text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+            Simple, private tools <span className="text-brand-gradient">people trust</span>
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {FEATURES.map((f) => (
-              <div key={f.title} className="rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-lg shadow-black/20">
+              <div key={f.title} className="rounded-2xl border border-slate-100 bg-gradient-to-b from-brand-50/60 to-white p-5 transition hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-900/10">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-lg shadow-brand-600/30">
                   <Icon name={f.icon} />
                 </span>
-                <h3 className="mt-4 font-semibold">{f.title}</h3>
-                <p className="mt-1.5 text-sm leading-6 text-brand-200/80">{f.text}</p>
+                <h3 className="mt-4 font-semibold text-ink">{f.title}</h3>
+                <p className="mt-1.5 text-sm leading-6 text-slate-600">{f.text}</p>
               </div>
             ))}
           </div>

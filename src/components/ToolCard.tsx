@@ -13,7 +13,7 @@ export function ToolCard({ tool }: { tool: Pick<ToolMeta, "slug" | "path" | "nam
   return (
     <Link
       href={tool.path}
-      className="group relative flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-brand-900/[0.03] transition duration-200 hover:-translate-y-1 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-900/10 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200"
+      className="group relative flex h-full flex-col rounded-2xl border border-white bg-white/90 p-5 shadow-[0_10px_30px_-18px_rgba(60,40,170,0.35)] ring-1 ring-brand-100/60 transition duration-200 hover:-translate-y-1 hover:ring-brand-200 hover:shadow-[0_22px_45px_-18px_rgba(60,40,170,0.4)] focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-200"
     >
       <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700 ring-1 ring-brand-100 transition duration-200 group-hover:bg-brand-gradient group-hover:text-white group-hover:shadow-lg group-hover:shadow-brand-600/30 group-hover:ring-transparent">
         {fmt ? (

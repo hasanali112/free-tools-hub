@@ -15,17 +15,23 @@ export function CategoryPage({ slug }: { slug: CategorySlug }) {
           { name: category.name, path: `/${slug}` },
         ]}
       />
-      <div className="relative mt-5 overflow-hidden rounded-3xl bg-brand-950 px-6 py-10 text-white sm:px-10">
-        <div aria-hidden className="pointer-events-none absolute -top-24 -right-16 h-72 w-72 rounded-full bg-brand-600/40 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-24 left-10 h-56 w-56 rounded-full bg-accent-400/20 blur-3xl" />
-        <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-gradient shadow-lg shadow-black/30">
-          <Icon name={slug} className="h-7 w-7" />
+      <div className="mx-auto mt-8 max-w-3xl text-center">
+        <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-gradient text-white shadow-xl shadow-brand-600/30">
+          <Icon name={slug} className="h-8 w-8" />
         </span>
-        <h1 className="relative mt-5 text-3xl font-bold tracking-tight sm:text-4xl">Free {category.name}</h1>
-        <p className="relative mt-3 max-w-2xl leading-7 text-brand-200/85">{category.description}</p>
-        <p className="relative mt-4 text-sm font-medium text-accent-300">{list.length} tools · 100% free · No sign-up</p>
+        <h1 className="mt-6 text-3xl font-extrabold tracking-tight text-ink sm:text-5xl">
+          Free <span className="text-brand-gradient">{category.name}</span>
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-7 font-medium text-slate-600 sm:text-lg">{category.description}</p>
+        <ul className="mt-6 flex flex-wrap justify-center gap-2 text-sm font-medium">
+          {[`${list.length} tools`, "100% free", "No sign-up", "Private"].map((t) => (
+            <li key={t} className="rounded-full border border-white bg-white/90 px-4 py-1.5 text-brand-700 shadow-[0_6px_20px_-8px_rgba(60,40,170,0.25)]">
+              {t}
+            </li>
+          ))}
+        </ul>
       </div>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((t) => (
           <ToolCard key={t.slug} tool={t} />
         ))}

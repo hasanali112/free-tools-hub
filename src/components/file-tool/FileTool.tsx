@@ -250,7 +250,7 @@ export function FileTool({
   const tooFew = total < minFiles;
 
   return (
-    <div className="rounded-3xl border border-slate-200/80 bg-white p-4 shadow-xl shadow-brand-900/5 sm:p-6">
+    <div className="surface p-4 sm:p-6">
       {/* Drop zone */}
       <div
         role="button"

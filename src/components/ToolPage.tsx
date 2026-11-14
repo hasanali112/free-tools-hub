@@ -48,8 +48,8 @@ export function ToolPage({
           <Icon name={tool.slug.startsWith("paycheck") ? "paycheck" : tool.slug} className="h-7 w-7" />
         </span>
         <div>
-          <h1 className="text-2xl leading-tight font-bold tracking-tight text-ink sm:text-4xl">{tool.h1}</h1>
-          <p className="mt-2 text-base text-slate-600 sm:text-lg">{tool.summary}</p>
+          <h1 className="text-2xl leading-tight font-extrabold tracking-tight text-ink sm:text-[2.4rem]">{tool.h1}</h1>
+          <p className="mt-2 text-base font-medium text-slate-600 sm:text-lg">{tool.summary}</p>
         </div>
       </div>
       <ul className="mt-4 flex flex-wrap gap-2 text-xs font-medium text-brand-800">
@@ -58,7 +58,7 @@ export function ToolPage({
           ["lock", tool.category === "calculator" ? "Nothing is saved" : "No upload — private"],
           ["bolt", "No sign-up"],
         ].map(([icon, label]) => (
-          <li key={label} className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3 py-1 ring-1 ring-brand-100">
+          <li key={label} className="inline-flex items-center gap-1.5 rounded-full border border-white bg-white/90 px-3 py-1 text-brand-700 shadow-[0_6px_20px_-8px_rgba(60,40,170,0.25)]">
             <Icon name={icon} className="h-3.5 w-3.5" strokeWidth={2.2} />
             {label}
           </li>
@@ -72,10 +72,10 @@ export function ToolPage({
       <AdSlot name="below-tool" path={tool.path} enabled={showAds} />
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold text-ink sm:text-2xl">How to use the {tool.name} tool</h2>
+        <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">How to use the {tool.name} tool</h2>
         <ol className="mt-5 grid gap-4 sm:grid-cols-3">
           {tool.howTo.map((step, i) => (
-            <li key={i} className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm">
+            <li key={i} className="rounded-2xl border border-white bg-white/90 p-5 shadow-[0_12px_36px_-18px_rgba(60,40,170,0.3)] ring-1 ring-brand-100/60">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-gradient text-sm font-bold text-white shadow-md shadow-brand-600/25">
                 {i + 1}
               </span>
@@ -90,10 +90,10 @@ export function ToolPage({
       <AdSlot name="in-content" path={tool.path} enabled={showAds} />
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold text-ink sm:text-2xl">Frequently asked questions</h2>
+        <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">Frequently asked questions</h2>
         <div className="mt-5 space-y-3">
           {tool.faqs.map((f) => (
-            <details key={f.q} className="group rounded-2xl border border-slate-200/80 bg-white px-5 py-4 shadow-sm transition open:border-brand-200 open:shadow-md open:shadow-brand-900/5">
+            <details key={f.q} className="group rounded-2xl border border-white bg-white/90 px-5 py-4 shadow-[0_10px_30px_-18px_rgba(60,40,170,0.3)] ring-1 ring-brand-100/60 transition open:ring-brand-200">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-ink">
                 <h3>{f.q}</h3>
                 <span aria-hidden className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-50 text-lg leading-none text-brand-700 transition group-open:rotate-45 group-open:bg-brand-gradient group-open:text-white">
@@ -107,7 +107,7 @@ export function ToolPage({
       </section>
 
       <section className="mt-12">
-        <h2 className="text-xl font-semibold text-ink sm:text-2xl">Related tools</h2>
+        <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">Related tools</h2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {relatedTools(tool).map((t) => (
             <ToolCard key={t.slug} tool={t} />

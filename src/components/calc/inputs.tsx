@@ -87,7 +87,7 @@ export function SelectField<T extends string>({
 }
 
 export function CalcCard({ children }: { children: React.ReactNode }) {
-  return <div className="rounded-3xl border border-slate-200/80 bg-white p-4 shadow-xl shadow-brand-900/5 sm:p-6">{children}</div>;
+  return <div className="surface p-4 sm:p-6">{children}</div>;
 }
 
 /** Big highlighted result. */

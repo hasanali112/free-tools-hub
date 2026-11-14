@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { ToolCard } from "./ToolCard";
 import { Icon } from "./ToolIcon";
-import { HeroBackground } from "./HeroBackground";
 
 export interface SearchItem {
   slug: string;
@@ -34,10 +33,8 @@ export function ToolSearch({
 
   return (
     <>
-      {/* -mt/pt: the hero background runs under the floating header */}
-      <section className="relative -mt-[80px] overflow-hidden pt-[80px]">
-        <HeroBackground />
-        <div className="relative mx-auto max-w-6xl px-4 pt-12 pb-16 text-center sm:pt-16 sm:pb-24">
+      <section className="relative">
+        <div className="relative mx-auto max-w-6xl px-4 pt-10 pb-12 text-center sm:pt-14 sm:pb-16">
           {hero}
           <form
             role="search"
