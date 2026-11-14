@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ToolCard } from "./ToolCard";
 import { Icon } from "./ToolIcon";
+import { HeroBackground } from "./HeroBackground";
 
 export interface SearchItem {
   slug: string;
@@ -33,38 +34,47 @@ export function ToolSearch({
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-brand-100/60">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(60rem_30rem_at_50%_-10%,rgba(124,58,237,0.16),transparent),radial-gradient(30rem_20rem_at_90%_20%,rgba(34,211,238,0.12),transparent)]" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:linear-gradient(rgba(101,69,234,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(101,69,234,0.07)_1px,transparent_1px)] [background-size:44px_44px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
-        />
-        <div className="relative mx-auto max-w-4xl px-4 pt-14 pb-14 text-center sm:pt-20 sm:pb-20">
+      {/* -mt/pt: the hero background runs under the floating header */}
+      <section className="relative -mt-[80px] overflow-hidden pt-[80px]">
+        <HeroBackground />
+        <div className="relative mx-auto max-w-6xl px-4 pt-12 pb-16 text-center sm:pt-16 sm:pb-24">
           {hero}
-          <div className="relative mx-auto mt-8 max-w-2xl">
+          <form
+            role="search"
+            onSubmit={(e) => {
+              e.preventDefault();
+              document.getElementById("tools")?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            className="relative mx-auto mt-10 flex h-16 max-w-[58rem] items-center rounded-full border border-white bg-white pr-1.5 pl-5 shadow-[0_18px_50px_-15px_rgba(60,40,170,0.28)] ring-1 ring-brand-100/60 focus-within:ring-4 focus-within:ring-brand-100 sm:h-[4.5rem] sm:pr-2 sm:pl-7"
+          >
             <label htmlFor="tool-search" className="sr-only">
               Search tools
             </label>
-            <svg aria-hidden className="pointer-events-none absolute top-1/2 left-5 h-5 w-5 -translate-y-1/2 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-              <path strokeLinecap="round" d="m21 21-4.3-4.3M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z" />
-            </svg>
+            <Icon name="search" className="h-6 w-6 shrink-0 text-brand-700" strokeWidth={2.4} />
             <input
               id="tool-search"
               type="search"
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Search tools — HEIC, compress, merge PDF, paycheck…"
+              placeholder="Search tools – HEIC, compress, merge PDF, paycheck…"
               autoComplete="off"
-              className="h-16 w-full rounded-2xl border border-slate-200 bg-white pr-5 pl-13 text-base text-ink shadow-xl shadow-brand-900/10 placeholder:text-slate-400 focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-100"
+              className="h-full min-w-0 flex-1 bg-transparent px-3 text-base text-ink placeholder:text-slate-400 focus:outline-none sm:px-4 sm:text-lg [&::-webkit-search-cancel-button]:hidden"
             />
-          </div>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-sm">
-            <span className="text-slate-500">Popular:</span>
+            <button
+              type="submit"
+              className="inline-flex h-12 shrink-0 items-center gap-2 rounded-full bg-brand-gradient px-5 text-base font-semibold text-white shadow-lg shadow-brand-700/30 transition hover:brightness-110 sm:h-14 sm:px-8 sm:text-lg"
+            >
+              Search
+              <Icon name="arrow" className="h-5 w-5" strokeWidth={2.6} />
+            </button>
+          </form>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-3 text-sm sm:text-base">
+            <span className="font-medium text-slate-700">Popular:</span>
             {popular.map((p) => (
               <Link
                 key={p.path}
                 href={p.path}
-                className="rounded-full border border-brand-100 bg-white/80 px-3 py-1 font-medium text-brand-700 transition hover:border-brand-300 hover:bg-brand-50"
+                className="rounded-full border border-white bg-white/90 px-4 py-2 font-medium text-brand-700 shadow-[0_6px_20px_-8px_rgba(60,40,170,0.25)] transition hover:-translate-y-0.5 hover:text-brand-900 hover:shadow-[0_10px_24px_-8px_rgba(60,40,170,0.35)] sm:px-5"
               >
                 {p.name}
               </Link>
@@ -73,12 +83,12 @@ export function ToolSearch({
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4">
+      <div id="tools" className="mx-auto max-w-6xl scroll-mt-24 px-4">
         {categories.map((c) => {
           const list = results.filter((r) => r.category === c.slug);
           if (!list.length) return null;
           return (
-            <section key={c.slug} className="mt-14">
+            <section key={c.slug} className="mt-16 first:mt-12">
               <div className="flex items-end justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-lg shadow-brand-600/25">

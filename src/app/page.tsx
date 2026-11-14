@@ -19,6 +19,40 @@ const FEATURES = [
   { icon: "phone", title: "Works on iPhone", text: "Designed for phones first — convert photos and PDFs right from your camera roll." },
 ];
 
+function ShieldBadge() {
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" className="h-7 w-7 shrink-0">
+      <defs>
+        <linearGradient id="sb" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
+          <stop stopColor="#6d3cf0" />
+          <stop offset="1" stopColor="#4a1fc8" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"
+        fill="url(#sb)"
+      />
+      <path d="m8.8 12.2 2.2 2.2 4.3-4.6" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Hand-drawn underline under "private". */
+function Swoosh() {
+  return (
+    <svg aria-hidden viewBox="0 0 300 24" preserveAspectRatio="none" className="absolute -bottom-1 left-[4%] h-3 w-[92%] sm:h-4">
+      <defs>
+        <linearGradient id="sw" x1="0" x2="1">
+          <stop stopColor="#5b21d6" />
+          <stop offset=".6" stopColor="#4338e8" />
+          <stop offset="1" stopColor="#2f7bff" stopOpacity=".5" />
+        </linearGradient>
+      </defs>
+      <path d="M4 16C70 8 150 4 296 10" fill="none" stroke="url(#sw)" strokeWidth="6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function Home() {
   // Only pass the small fields the search needs to the client.
   const items: SearchItem[] = tools.map((t) => ({
@@ -40,26 +74,34 @@ export default function Home() {
         popular={POPULAR.map((s) => ({ name: getTool(s).name, path: getTool(s).path }))}
         hero={
           <>
-            <p className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 px-4 py-1.5 text-xs font-semibold text-brand-700 shadow-sm sm:text-sm">
-              <span className="h-2 w-2 rounded-full bg-accent-400 shadow-[0_0_0_4px_rgba(34,211,238,0.2)]" />
+            <p className="inline-flex items-center gap-3 rounded-full border border-brand-200/80 bg-white/90 py-2 pr-2.5 pl-4 text-xs font-semibold text-ink shadow-[0_8px_24px_-12px_rgba(60,40,170,0.35)] sm:text-[0.95rem]">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_0_4px_rgba(16,185,129,0.15)]" />
               100% free · No sign-up · Files stay on your device
+              <ShieldBadge />
             </p>
-            <h1 className="mt-6 text-4xl leading-[1.1] font-bold tracking-tight text-ink sm:text-6xl">
-              Every tool you need, <span className="text-brand-gradient">free &amp; private</span>
+            <h1 className="mt-8 text-[2.65rem] leading-[1.06] font-extrabold tracking-[-0.035em] text-ink sm:text-6xl lg:text-[4.6rem]">
+              Every tool you need, <span className="text-azure-500">free &amp;</span>{" "}
+              <span className="relative inline-block pb-2">
+                <span className="text-brand-gradient">private</span>
+                <Swoosh />
+              </span>
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-7 font-medium text-slate-700 sm:text-[1.35rem] sm:leading-9">
               Convert and compress images, PDFs and videos, or work out your take-home pay and mortgage — in seconds,
               right in your browser.
             </p>
-            <dl className="mx-auto mt-8 flex max-w-lg flex-wrap justify-center gap-x-8 gap-y-3 text-sm">
-              {[
-                [String(tools.length), "free tools"],
-                ["0", "file uploads"],
-                ["51", "state paycheck calculators"],
-              ].map(([n, label]) => (
-                <div key={label} className="flex items-baseline gap-1.5">
-                  <dt className="text-2xl font-bold text-brand-gradient">{n}</dt>
-                  <dd className="text-slate-600">{label}</dd>
+            <dl className="mx-auto mt-9 flex flex-wrap items-center justify-center gap-y-4 md:flex-nowrap md:divide-x md:divide-slate-300">
+              {(
+                [
+                  ["wrench", String(tools.length), "free tools"],
+                  ["cloudUpload", "0", "file uploads"],
+                  ["shieldCheck", "51", "state paycheck calculators"],
+                ] as const
+              ).map(([icon, n, label]) => (
+                <div key={label} className="flex shrink-0 items-center gap-2.5 px-4 md:px-7">
+                  <Icon name={icon} className="h-7 w-7 text-brand-600 sm:h-8 sm:w-8" strokeWidth={2} />
+                  <dt className="text-2xl font-bold text-azure-600 sm:text-[2rem]">{n}</dt>
+                  <dd className="self-end pb-0.5 text-sm font-medium text-slate-700 sm:pb-1 sm:text-base">{label}</dd>
                 </div>
               ))}
             </dl>

@@ -1,10 +1,10 @@
 import { ImageResponse } from "next/og";
-import { LOGO_SVG } from "@/components/brand/logo-paths";
+import { LOGO_TILE_SVG } from "@/components/brand/logo-paths";
 import { site } from "@/config/site";
 
 export const ogSize = { width: 1200, height: 630 };
 
-const logoSrc = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString("base64")}`;
+const logoSrc = `data:image/svg+xml;base64,${Buffer.from(LOGO_TILE_SVG).toString("base64")}`;
 
 /** Shared Open Graph image (1200×630) in the AIToolkitFree brand, rendered at build time. */
 export function ogImage({ title, subtitle, badge }: { title: string; subtitle: string; badge?: string }) {

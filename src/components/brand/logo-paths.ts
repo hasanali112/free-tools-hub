@@ -1,14 +1,23 @@
-/** Shared geometry for the AIToolkitFree logo mark (48×48), used by the React logo, favicon and OG images. */
+/**
+ * Shared geometry for the AIToolkitFree "A" logo mark (48×48).
+ * Used by the React logo, favicon, Apple touch icon and OG images — change it here only.
+ */
 export const LOGO = {
-  from: "#4F46E5",
-  to: "#7C3AED",
-  accent: "#67E8F9",
-  // Large 4-point "AI spark"
-  spark: "M21 10.5c1.25 8.2 4.3 11.25 12.5 12.5-8.2 1.25-11.25 4.3-12.5 12.5C19.75 27.3 16.7 24.25 8.5 23c8.2-1.25 11.25-4.3 12.5-12.5Z",
-  // Small cyan spark
-  mini: "M35.5 7.5c.55 3.6 1.9 4.95 5.5 5.5-3.6.55-4.95 1.9-5.5 5.5-.55-3.6-1.9-4.95-5.5-5.5 3.6-.55 4.95-1.9 5.5-5.5Z",
-  // Toolkit base (rounded bar)
-  bar: { x: 28.5, y: 33, w: 11, h: 4.5, r: 2.25 },
+  // Gradient runs from electric blue (left leg) to violet (right leg).
+  from: "#2F7BFF",
+  to: "#5B21D6",
+  // Bold geometric "A" (apex top-center, open bottom).
+  a: "M20.6 6.2c1.5-2.9 5.3-2.9 6.8 0l16.2 31.6c1.3 2.6-.5 5.7-3.4 5.7h-3.1c-1.4 0-2.7-.8-3.4-2.1L24 19.6 14.3 41.4c-.6 1.3-1.9 2.1-3.4 2.1H7.8c-2.9 0-4.7-3.1-3.4-5.7Z",
+  // Crossbar that turns the Λ into an A.
+  bar: "M15.6 33.2h14.1c1.3 0 2.2 1.4 1.6 2.6l-.9 1.9c-.4.9-1.3 1.4-2.2 1.4H13.4c-1.3 0-2.2-1.4-1.6-2.6l.9-1.9c.6-.9 1.5-1.4 2.9-1.4Z",
 } as const;
 
-export const LOGO_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="g" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="${LOGO.from}"/><stop offset="1" stop-color="${LOGO.to}"/></linearGradient></defs><rect width="48" height="48" rx="13" fill="url(#g)"/><path d="${LOGO.spark}" fill="#fff"/><path d="${LOGO.mini}" fill="${LOGO.accent}"/><rect x="${LOGO.bar.x}" y="${LOGO.bar.y}" width="${LOGO.bar.w}" height="${LOGO.bar.h}" rx="${LOGO.bar.r}" fill="#fff" fill-opacity=".55"/></svg>`;
+const svg = (bg?: string) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><defs><linearGradient id="g" x1="4" y1="40" x2="44" y2="8" gradientUnits="userSpaceOnUse"><stop stop-color="${LOGO.from}"/><stop offset="1" stop-color="${LOGO.to}"/></linearGradient></defs>${
+    bg ? `<rect width="48" height="48" rx="11" fill="${bg}"/><g transform="translate(6.5 6) scale(.73)">` : "<g>"
+  }<path d="${LOGO.a}" fill="url(#g)"/><path d="${LOGO.bar}" fill="url(#g)" opacity=".85"/></g></svg>`;
+
+/** Transparent "A" (favicon). */
+export const LOGO_SVG = svg();
+/** "A" on a white rounded tile (Apple touch icon, dark backgrounds). */
+export const LOGO_TILE_SVG = svg("#ffffff");
